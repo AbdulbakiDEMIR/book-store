@@ -1,7 +1,7 @@
 import { ListBooksPage } from "../pages/list_books_page.js";
 import { EditBooksPage } from "../pages/edit_books_page.js";
 import { CreateBooksPage } from "../pages/create_book_page.js";
-
+import { LoginPage } from "../pages/login_page.js";
 
 export const routing_data = [
     
@@ -16,5 +16,9 @@ export const routing_data = [
     {
         path: "edit",
         page: () => EditBooksPage()
+    },
+    {
+        path: "login",
+        page: () => LoginPage()
     }
 ]

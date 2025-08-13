@@ -131,3 +131,11 @@ h6{ font-family: 'Open Sans', sans-serif;}
     left: 0;
     z-index: 10;
 }
+
+.form-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 10rem;
+}

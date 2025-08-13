@@ -1,4 +1,4 @@
-import { changePage, login, logout } from "../js/script.js";
+import { changePage,  logout } from "../js/script.js";
 
 export const NavBar = () => {
     return `
@@ -18,4 +18,22 @@ export const NavBarEventLoader = () => {
     document.getElementById("goToEdit").addEventListener("click", ()=>{changePage("edit")})
     document.getElementById("loginButton").addEventListener("click", ()=>{login()})
     document.getElementById("logoutButton").addEventListener("click", ()=>{logout()})
+}
+
+const login =  () => {
+    const formData = new FormData()
+    formData.append("username","baki");
+    formData.append("password","t1W7ku@J7EJMDU");
+    fetch("http://localhost/api_book_db/user_login.php", {
+        method: "POST",
+        body: formData,
+        credentials: "include" // ⚠ cookie gönderimi için
+    })
+    .then(response => response.text()) // Sunucudan gelen cevabı text olarak al
+    .then(data => {
+        console.log("Sunucu cevabı:", data);
+    })
+    .catch(error => {
+        console.error("Hata:", error);
+    });
 }

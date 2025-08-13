@@ -16,5 +16,6 @@ export const config =  {
 
 export const pageQueryParameterKey = "";
 
-export const api_name_server = "http://localhost/api_book_db/";
+// export const api_name_server = "http://localhost/api_book_db/";
+export const api_name_server = "https://abdulbakidemir.com.tr/api_book_db/";
 

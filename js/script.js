@@ -1,4 +1,4 @@
-import {config, pageQueryParameterKey } from "../config.js"
+import { config, pageQueryParameterKey, api_name_server } from "../config.js"
 import { renderApp } from "../routing/routing.js";
 import { AppState } from "../states/BookStates.js";
 
@@ -72,40 +72,37 @@ export const watchMediaQueries = (queriesAndHandlers) => {
     };
 }
 
-export const login = () => {
-    const formData = new FormData()
-    formData.append("username","baki");
-    formData.append("password","t1W7ku@J7EJMDU");
-    fetch("http://localhost/api_book_db/user_login.php", {
-        method: "POST",
-        body: formData,
-        credentials: "include" // ⚠ cookie gönderimi için
-    })
-    .then(response => response.json()) // Sunucudan gelen cevabı text olarak al
-    .then(data => {
-        console.log("Sunucu cevabı:", data);
-    })
-    .catch(error => {
-        console.error("Hata:", error);
-    });
-}
 
 export const logout = () => {
     AppState.fetchBook = false 
     AppState.Books = [],
     AppState.Categories = [],
     AppState.Filters = { Search: "" }
-    
-    fetch("http://localhost/api_book_db/user_logout.php", {
+    console.log(AppState)
+    fetch(`${api_name_server}user_logout.php`, {
         method: "POST",
         credentials: "include" // ⚠ cookie gönderimi için
     })
     .then(response => response.json()) // Sunucudan gelen cevabı text olarak al
     .then(data => {
-        console.log("Sunucu cevabı:", data);
+        if(data.success){
+            changePage("login")
+        }
     })
     .catch(error => {
         console.error("Hata:", error);
     });
 
+}
+
+export const loginCheck = async () => {
+    const response = await fetch(`${api_name_server}user_check_session.php`,
+        {
+            method: "GET",
+            credentials: "include" // ⚠ cookie gönderimi için
+        }
+    );
+    const data = await response.json();
+    return data.logged_in
+    
 }

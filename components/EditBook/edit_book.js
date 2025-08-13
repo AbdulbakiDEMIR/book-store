@@ -169,6 +169,7 @@ export const EditBooks = async () => {
 }
 
 export async function renderPage() {
+    console.log(AppState)
     const container = document.getElementById("app");
     container.innerHTML = await EditBooks();
 

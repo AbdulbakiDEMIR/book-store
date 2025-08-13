@@ -24,7 +24,6 @@ export const getCategory = async () => {
 export const getBooks = async () => {
     try{
         spinner(true);
-        AppState.fetchBook = true;
         const response = await fetch(`${api_name_server}book_get.php`,
             {
                 method: "GET",
@@ -41,6 +40,7 @@ export const getBooks = async () => {
                 book.img_src = await renderImg(book.isbn);
                 return book;
             }));
+            AppState.fetchBook = true;
             AppState.Books = booksWithImages;
         }
     }catch (error) {
