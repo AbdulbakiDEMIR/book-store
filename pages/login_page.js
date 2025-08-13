@@ -1,4 +1,4 @@
-import { renderPage } from "../components/Login/Login.js"
+import { renderPage } from "../components/Login/login.js"
 import { loginCheck, changePage } from "../js/script.js"
 
 
