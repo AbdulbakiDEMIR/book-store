@@ -1,4 +1,5 @@
 import { changePage,  logout } from "../js/script.js";
+import { api_name_server } from "../config.js";
 
 export const NavBar = () => {
     return `
@@ -24,7 +25,7 @@ const login =  () => {
     const formData = new FormData()
     formData.append("username","baki");
     formData.append("password","t1W7ku@J7EJMDU");
-    fetch("http://localhost/api_book_db/user_login.php", {
+    fetch(`${api_name_server}user_login.php`, {
         method: "POST",
         body: formData,
         credentials: "include" // ⚠ cookie gönderimi için

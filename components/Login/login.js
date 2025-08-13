@@ -1,4 +1,5 @@
 import { spinner, changePage } from "../../js/script.js";
+import { api_name_server } from "../../config.js";
 
 const Login = () => {
     return `
@@ -43,7 +44,7 @@ const login = async (data) => {
     formData.append("password", data.password);
 
     try {
-        const response = await fetch("http://localhost/api_book_db/user_login.php", {
+        const response = await fetch(`${api_name_server}user_login.php`, {
             method: "POST",
             body: formData,
             credentials: "include"
