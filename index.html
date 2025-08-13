@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinamic Page</title>
+
+  <!-- Bu script JSON'dan CSS ve JS dosyalarını dinamik yükleyecek -->
+  <script type="module">
+    import {config} from './config.js';
+
+    // const config = await fetch('/dinamic-web-app/config.json').then(res => res.json());
+    const base = config.basePath ?? '';  
+    // CSS dosyalarını <head> içine ekle
+    config.styles?.forEach(style => {
+      const link = document.createElement('link');
+      Object.keys(style).forEach(key => {
+        if(key === 'href' && (style.base || style.base === undefined)) {
+          link.setAttribute(key, base+style[key]);
+        } else  if (key !== "base")  {
+          link.setAttribute(key, style[key]);
+        }
+      });
+      document.head.appendChild(link);
+    });
+
+
+    config.scripts?.forEach(src => {
+      const script = document.createElement('script');
+      Object.keys(src).forEach(key => {
+        if(key === 'src' && (src.base || src.base === undefined)) {
+          script.setAttribute(key, base+src[key]);
+        } else if (key !== "base") {
+          script.setAttribute(key, src[key]);
+        }
+      });
+      document.body.appendChild(script);
+    });
+  </script>
+</head>
+<body>
+  <div id="spinner-container" style="z-index: 3;">
+      <div id="spinner" class="spinner-border text-white" style="width: 7rem; height: 7rem;"></div>
+  </div>
+  <div id="app"></div>
+
+  <!-- jQuery gibi harici bir script gerekiyorsa doğrudan yaz -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+</html>

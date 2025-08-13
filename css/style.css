@@ -1,0 +1,133 @@
+*{margin: 0px; padding: 0px; outline: none; border: none; list-style: none;text-decoration: none; box-sizing: border-box;}
+@media (prefers-reduced-motion: no-preference) {:root {scroll-behavior: smooth;}}
+html {font-size: 16px;}
+@media (max-width: 1100px) {html { font-size: 14px; }}
+@media (max-width: 480px) {html { font-size: 12px; }}
+h1{ font-family: 'Open Sans', sans-serif;}
+h2{ font-family: 'Open Sans', sans-serif;}
+h3{ font-family: 'Open Sans', sans-serif;}
+h4{ font-family: 'Open Sans', sans-serif;}
+h5{ font-family: 'Open Sans', sans-serif;}
+h6{ font-family: 'Open Sans', sans-serif;}
+
+
+#spinner-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1236;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+}
+
+
+#result .info-header{
+    position: relative;
+}
+
+#result .info-header::after{
+    content: ":";
+    position: absolute;
+    right: 0;
+}
+.modal {
+    background: #111a;
+}
+.modal-backdrop{
+    z-index: 1!important;
+}
+
+.book-img{
+    aspect-ratio: 2/3; 
+    width: 100%; 
+    object-fit: contain;
+}
+
+#side-bar{
+    position: absolute;
+    width: 200px;
+    top: 2rem;
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+@media (max-width: 768px){
+    #side-bar{
+        display: none;
+    }
+    #books-container {
+        width: 100%!important;
+        margin-left: auto!important;
+    }
+}
+@media (min-width: 768px){
+    .canvas-none{
+        display: none!important;
+    }
+}
+#books-container{
+    width: calc(100% - 200px);
+    padding-left: 2rem;
+    margin-left: auto;
+}
+
+#FilterAccordion .accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-btn-color);
+    background-color: var(--bs-accordion-btn-bg);
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color)!important;
+}
+
+#FilterAccordion .accordion-collapse{
+    max-height: 200px;
+    overflow: auto;
+}
+
+.book-edit-popover{
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    right: 3px;
+    transform: translate(5px, 5px);
+    cursor: default;
+}
+.book-edit-popover[show="true"]{
+    display: block;
+}
+.book-edit-popover[show="false"]{
+    display: none;
+}
+.book-edit-popover-container{
+    margin-top: 1rem;
+    background: #fff;
+    border-radius: var(--bs-border-radius);
+    border-top-right-radius: 0px!important;
+    padding: 1rem ;
+    font-size: 0.8rem;
+}
+.book-edit-popover-container > div{
+    cursor: pointer;
+}
+.book-edit-popover::before{
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    display: inline-block;  
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-bottom: 10px solid rgb(255, 255, 255);
+}
+.popover-bg{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
