@@ -1,5 +1,4 @@
-import { changePage } from "../../js/script.js";
-import { login, logout } from "../js/script.js";
+import { changePage, login, logout } from "../js/script.js";
 
 export const NavBar = () => {
     return `
