@@ -2,7 +2,7 @@
 export const config =  {
     // basePath: "/book-store/",
     // basePath: "/",
-    basePath: "",
+    basePath: "./",
     scripts: [
         { src: "js/script.js", type: "module"},
         { src: "app.js", type: "module"},
