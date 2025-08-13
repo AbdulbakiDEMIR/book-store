@@ -29,7 +29,7 @@
       const script = document.createElement('script');
       Object.keys(src).forEach(key => {
         if(key === 'src' && (src.base || src.base === undefined)) {
-          script.src = base+src[key];
+          script.setAttribute(key, base+src[key]);
         } else if (key !== "base") {
           script.setAttribute(key, src[key]);
         }
