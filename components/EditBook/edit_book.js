@@ -8,7 +8,7 @@ import { Modal, ModalHide } from "../modal.js";
 import { ToastMessage } from "../toast_message.js";
 import { UpdateModal, UpdateModalEventLoader } from "./PageComponent/UpdateModal.js";
 import { showToast } from "../../js/script.js";
-import { api_name_server } from "../../../config.js";
+import { api_name_server } from "../../config.js";
 import { NavBar, NavBarEventLoader } from "../NavBar.js";
 
 // HTML event’leri için global fonksiyonlar
