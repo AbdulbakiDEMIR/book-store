@@ -8,7 +8,7 @@ export const getCategory = async () => {
         const response = await fetch(`${api_name_server}get_categories.php`,
             {
                 method: "GET",
-                credentials: "include" // ⚠ cookie gönderimi için
+                credentials: "include" 
             }
         );
         const data = await response.json();

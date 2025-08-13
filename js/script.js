@@ -81,7 +81,7 @@ export const logout = () => {
     console.log(AppState)
     fetch(`${api_name_server}user_logout.php`, {
         method: "POST",
-        credentials: "include" // ⚠ cookie gönderimi için
+        credentials: "include" 
     })
     .then(response => response.json()) // Sunucudan gelen cevabı text olarak al
     .then(data => {
@@ -99,7 +99,7 @@ export const loginCheck = async () => {
     const response = await fetch(`${api_name_server}user_check_session.php`,
         {
             method: "GET",
-            credentials: "include" // ⚠ cookie gönderimi için
+            credentials: "include" 
         }
     );
     const data = await response.json();
