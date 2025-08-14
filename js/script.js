@@ -2,8 +2,17 @@ import { config, pageQueryParameterKey, api_name_server } from "../config.js"
 import { renderApp } from "../routing/routing.js";
 import { AppState } from "../states/BookStates.js";
 
+function removeAllAttributes(el) {
+    // attributes koleksiyonunu önce diziye çeviriyoruz
+    const attrs = Array.from(el.attributes);
+    attrs.forEach(attr => {
+        el.removeAttribute(attr.name);
+    });
+}
 export const changePage = function (newPage) {
     document.getElementById("app").innerHTML="";
+    removeAllAttributes(document.body)
+    
     if(newPage===""){
         history.pushState(null, "", config.basePath);
     }

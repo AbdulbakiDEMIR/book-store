@@ -35,6 +35,7 @@ const modalBookSaveChanges = () => {
         publisher: publisher,
         publish_date: publishedDate,
         number_of_pages: pageCount,
+        category: CreateBookItem.book.category
     }
     ModalHide("ManualCreateModal");
     renderBook();
