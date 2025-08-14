@@ -76,6 +76,7 @@ export const EditBooks = async () => {
                 if (sideBar && canvasSideBar) {
                     if(canvasSideBar.innerHTML.trim() === ""){
                         sideBar.innerHTML = SideBar()
+                        SideBarEventLoader()
                     }else{
                         sideBar.innerHTML = ``;
                         while (canvasSideBar.firstChild) {
@@ -91,6 +92,7 @@ export const EditBooks = async () => {
                 if (sideBar && canvasSideBar) {
                     if(sideBar.innerHTML.trim() === ""){
                         canvasSideBar.innerHTML = SideBar()
+                        SideBarEventLoader()
                     }else{
                         canvasSideBar.innerHTML = ``;
                         while (sideBar.firstChild) {
