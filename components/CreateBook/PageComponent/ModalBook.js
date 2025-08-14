@@ -33,8 +33,8 @@ const modalBookSaveChanges = () => {
         subtitle: subtitle,
         author: author,
         publisher: publisher,
-        publishedDate: publishedDate,
-        pageCount: pageCount,
+        publish_date: publishedDate,
+        number_of_pages: pageCount,
     }
     ModalHide("ManualCreateModal");
     renderBook();

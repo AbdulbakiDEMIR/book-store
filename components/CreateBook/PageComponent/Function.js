@@ -56,8 +56,8 @@ const clearGlobalBook = () => {
         subtitle:"",
         author:"",
         publisher:"",
-        publishedDate:"",
-        pageCount: null,
+        publish_date:"",
+        number_of_pages: null,
         category: []
     }
 }

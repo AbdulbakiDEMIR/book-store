@@ -116,7 +116,6 @@ export const fetchGoogleAPI = async (isbn) => {
 
         if (data.items && data.items.length > 0) {
             const book = data.items[0].volumeInfo;
-
             CreateBookItem.book.title = book.title ? textCapitalize(book.title) : "";
             CreateBookItem.book.subtitle = book.subtitle ? textCapitalize(book.subtitle) : "";
             CreateBookItem.book.author = book.authors ? textCapitalize(book.authors.join(", ")) : "";
