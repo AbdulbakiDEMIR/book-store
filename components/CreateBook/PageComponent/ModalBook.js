@@ -8,8 +8,8 @@ export const modalBookLoad = () => {
     document.getElementById("modal_subtitle").value = CreateBookItem.book.subtitle;
     document.getElementById("modal_author").value = CreateBookItem.book.author;
     document.getElementById("modal_publisher").value = CreateBookItem.book.publisher;
-    document.getElementById("modal_published_date").value = CreateBookItem.book.publishedDate;
-    document.getElementById("modal_page_count").value = CreateBookItem.book.pageCount;
+    document.getElementById("modal_published_date").value = CreateBookItem.book.publish_date;
+    document.getElementById("modal_page_count").value = CreateBookItem.book.number_of_pages;
 }
 const modalBookCancel = () => {
     document.getElementById("modal_isbn").value = "";

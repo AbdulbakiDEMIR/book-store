@@ -77,14 +77,14 @@ export const renderBook = () => {
     document.getElementById("result_sub_title").innerHTML = CreateBookItem.book.subtitle;
     document.getElementById("result_author").innerHTML = CreateBookItem.book.author;
     document.getElementById("result_publisher").innerHTML = CreateBookItem.book.publisher;
-    document.getElementById("result_published_date").innerHTML = CreateBookItem.book.publishedDate;
-    document.getElementById("result_page_count").innerHTML = CreateBookItem.book.pageCount;
+    document.getElementById("result_published_date").innerHTML = CreateBookItem.book.publish_date;
+    document.getElementById("result_page_count").innerHTML = CreateBookItem.book.number_of_pages;
 }
 
 export const searchBook = async () => {
     spinner(true);
     document.getElementById("category_items").innerHTML = ``;
-    const isbn = document.getElementById("isbn").value.replace(/-/g, "");
+    const isbn = document.getElementById("isbn").value.replace(/[-\s]/g, "");
     if (!isbn) {
         showToast("Geçerli Bir ISBN Girin","warning")
         return;

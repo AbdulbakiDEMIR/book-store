@@ -9,7 +9,6 @@ import { ToastMessage } from "../toast_message.js";
 import { UpdateModal, UpdateModalEventLoader } from "./PageComponent/UpdateModal.js";
 import { showToast } from "../../js/script.js";
 import { api_name_server } from "../../config.js";
-import { NavBar, NavBarEventLoader } from "../NavBar.js";
 
 // HTML event’leri için global fonksiyonlar
 
@@ -103,7 +102,6 @@ export const EditBooks = async () => {
             </form>
         `
         return `
-            ${NavBar()}
             <div class="container">
                 <div class="d-flex position-relative">
                     <div id="side-bar">
@@ -130,7 +128,7 @@ export const EditBooks = async () => {
                     </div>
                 </div>
             </div>
-            <span class="canvas-none bg-danger text-white px-3 py-2 position-fixed top-0 left-0" style="transform: rotate(90deg) translate(50%, 50%);" data-bs-toggle="offcanvas" href="#SideBar" role="button" aria-controls="SideBar">
+            <span class="canvas-none bg-danger text-white px-3 py-2 position-fixed top-0 left-0" style="transform: rotate(90deg) translate(250%, 50%);" data-bs-toggle="offcanvas" href="#SideBar" role="button" aria-controls="SideBar">
                 Filtre
             </span>
             <div class="canvas-none offcanvas offcanvas-start" tabindex="-1" id="SideBar" aria-labelledby="SideBarLabel" style="width:250px">
@@ -193,5 +191,4 @@ export async function renderPage() {
     SideBarEventLoader()
     BookItemEventLoader()
     UpdateModalEventLoader()
-    NavBarEventLoader()
 }

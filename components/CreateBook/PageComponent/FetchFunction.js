@@ -3,6 +3,7 @@ import { spinner } from "../../../js/script.js";
 import { showToast } from "../../../js/script.js";
 import { CreateBookItem, AppState } from "../../../states/BookStates.js";
 import { api_name_server } from "../../../config.js";
+import { ModalHide } from "../../modal.js";
 
 export const getCategory = async () => {
     spinner(true);
@@ -77,8 +78,8 @@ export const addBookDB = async () => {
     formData.append("author", CreateBookItem.book.author);
     formData.append("subtitle", CreateBookItem.book.subtitle);
     formData.append("publisher", CreateBookItem.book.publisher);
-    formData.append("publish_date", CreateBookItem.book.publishedDate);
-    formData.append("number_of_pages", CreateBookItem.book.pageCount);
+    formData.append("publish_date", CreateBookItem.book.publish_date);
+    formData.append("number_of_pages", CreateBookItem.book.number_of_pages);
     if (Array.isArray(CreateBookItem.book.category)) {
         CreateBookItem.book.category.forEach(catId => {
             formData.append("categories[]", catId);
@@ -119,8 +120,8 @@ export const fetchGoogleAPI = async (isbn) => {
             CreateBookItem.book.title = book.title ? textCapitalize(book.title) : "";
             CreateBookItem.book.subtitle = book.subtitle ? textCapitalize(book.subtitle) : "";
             CreateBookItem.book.author = book.authors ? textCapitalize(book.authors.join(", ")) : "";
-            CreateBookItem.book.publishedDate =  book.publishedDate || "";
-            CreateBookItem.book.pageCount = book.pageCount || null;
+            CreateBookItem.book.publish_date =  book.publishedDate || "";
+            CreateBookItem.book.number_of_pages = book.pageCount || null;
 
             return true; // başarılı
         } else {
@@ -143,8 +144,8 @@ export const fetchOpenLibrary = async (isbn) => {
         if (!CreateBookItem.book.subtitle) CreateBookItem.book.subtitle = book.subtitle ? textCapitalize(book.subtitle) : "";
         if (!CreateBookItem.book.author && book.authors) CreateBookItem.book.author = book.authors ? textCapitalize(book.authors[0]?.name) : "";
         if (!CreateBookItem.book.publisher && book.publishers) CreateBookItem.book.publisher = book.publishers ? textCapitalize(book.publishers[0]?.name) : "";
-        if (!CreateBookItem.book.publishedDate) CreateBookItem.book.publishedDate = book.publish_date || "";
-        if (CreateBookItem.book.pageCount === null) CreateBookItem.book.pageCount = book.number_of_pages || null;
+        if (!CreateBookItem.book.publish_date) CreateBookItem.book.publish_date = book.publish_date || "";
+        if (CreateBookItem.book.number_of_pages === null) CreateBookItem.book.number_of_pages = book.number_of_pages || null;
 
     } catch (error) {
         console.error("OpenLibrary hatası:", error);

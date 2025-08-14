@@ -1,6 +1,6 @@
 import { filterBook } from "./FilterFunction.js";
 import { AppState } from "../../../states/BookStates.js";
-
+import { NavBar, NavBarEventLoader } from "../../NavBar.js";
 
 const CategoryFilterFunc = (event) => {
     if (!Array.isArray(AppState.Filters.Categories)) {
@@ -125,8 +125,8 @@ const PublisherFilterComponent = () =>{
 
 export const SideBar = () => {
     return`
-        <h5 class="ps-3">Filtre</h5>
-        <div class="accordion" id="FilterAccordion">
+        <div class="accordion w-100" id="FilterAccordion">
+            <h5 class="ps-3">Filtre</h5>
             <div class="accordion-item border-0">
                 <h2 class="accordion-header" id="filter_category_accordion">
                     <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_category" aria-expanded="true" aria-controls="collapse_category">
@@ -164,6 +164,7 @@ export const SideBar = () => {
                 </div>
             </div>
         </div>
+        ${NavBar("flex-column")}
     `
 }
 
@@ -178,4 +179,5 @@ export const SideBarEventLoader = () => {
     document.querySelectorAll(".publisher-filter-checkbox").forEach(element => {
         element.addEventListener("click", (event) => {PublisherFilterFunc(event)})
     })
+    NavBarEventLoader()
 }

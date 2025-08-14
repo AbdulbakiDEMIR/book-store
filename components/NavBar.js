@@ -1,12 +1,12 @@
 import { changePage,  logout } from "../js/script.js";
 
-export const NavBar = () => {
+export const NavBar = (className) => {
     return `
-        <div class="d-flex align-items-center justify-content-center gap-2 my-3 w-100">
-            <div id="goToCreate" class="px-3 py-2 bg-primary fw-semibold text-white" style="cursor:pointer">Yeni Kitap Ekle</div>
-            <div id="goToList" class="px-3 py-2 bg-primary fw-semibold text-white" style="cursor:pointer">Kitapları Gör</div>
-            <div id="goToEdit" class="px-3 py-2 bg-primary fw-semibold text-white" style="cursor:pointer">Kitapları Düzenle</div>
-            <div id="logoutButton" class="px-3 py-2 bg-danger fw-semibold text-white" style="cursor:pointer">logout</div>
+        <div class="d-flex ${className} gap-2 my-3 w-100">
+            <div id="goToCreate" class="px-3 py-2 bg-primary fw-semibold text-white" style="cursor:pointer">Kitap Ekle</div>
+            <div id="goToList" class="px-3 py-2 bg-primary fw-semibold text-white" style="cursor:pointer">Kitaplar</div>
+            <div id="goToEdit" class="px-3 py-2 bg-primary fw-semibold text-white" style="cursor:pointer">Düzenle</div>
+            <div id="logoutButton" class="px-3 py-2 bg-danger fw-semibold text-white" style="cursor:pointer">Çıkış</div>
         </div>
     `
 }

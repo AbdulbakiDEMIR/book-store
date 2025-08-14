@@ -55,7 +55,16 @@ h6{ font-family: 'Open Sans', sans-serif;}
     top: 2rem;
     height: calc(100vh - 4rem);
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+#canvasSideBar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 @media (max-width: 768px){
     #side-bar{
         display: none;

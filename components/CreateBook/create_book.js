@@ -5,6 +5,8 @@ import { getCategory, modalCreateCategory, addBookDB } from "./PageComponent/Fet
 import { ModalBook, ModalBookEventLoader, modalBookLoad } from "./PageComponent/ModalBook.js";
 import { showSelectedCategory, searchBook, modalCategoryCancel } from "./PageComponent/Function.js";
 import { NavBar, NavBarEventLoader } from "../NavBar.js";
+
+
 export const CreateBook = async () => {
     getCategory()
     const modalCategoryContent = `
@@ -16,7 +18,7 @@ export const CreateBook = async () => {
         </form>
     `
     return`
-        ${NavBar()}
+        ${NavBar("justify-content-center")}
         <section id="page1" >
             <div class="container">
                 <form onsubmit="event.preventDefault();" class="row flex-column mt-5">
