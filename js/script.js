@@ -87,7 +87,6 @@ export const logout = () => {
     AppState.Books = [],
     AppState.Categories = [],
     AppState.Filters = { Search: "" }
-    console.log(AppState)
     fetch(`${api_name_server}user_logout.php`, {
         method: "POST",
         credentials: "include" 

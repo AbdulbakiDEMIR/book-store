@@ -99,7 +99,6 @@ export const addBookDB = async () => {
         const data = await response.json();
         if(data.success && AppState.fetchBook){
             AppState.Books.push(CreateBookItem.book)
-            console.log(AppState.Books)
         }
         showToast(response.status+": "+data.message,data.success ? "success" : "danger" )
         

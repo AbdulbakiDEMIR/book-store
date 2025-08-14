@@ -68,7 +68,6 @@ const renderImg = async (isbn) => {
         const img = document.getElementById('result_img');
         img.src = URL.createObjectURL(blob);
         CreateBookItem.book.img_src = URL.createObjectURL(blob)
-        console.log(CreateBookItem)
     });
 }
 export const renderBook = () => {

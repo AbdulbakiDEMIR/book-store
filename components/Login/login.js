@@ -50,7 +50,6 @@ const login = async (data) => {
             credentials: "include"
         });
         const result = await response.json();
-        console.log("Sunucu cevabı:", result);
         return result.success; // ← şimdi doğru şekilde döner
     } catch (error) {
         console.error("Hata:", error);
