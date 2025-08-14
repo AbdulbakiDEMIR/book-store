@@ -66,32 +66,7 @@ export const EditBooks = async () => {
         const book_items_array = AppState.Books.map(book => BookItem(book));
         const book_items = book_items_array.join('');
 
-        watchMediaQueries({
-            '(min-width: 768px)': () => {
-                const canvasClose = document.querySelector("#SideBar > div.offcanvas-header > button");
-                if(canvasClose) canvasClose.click();
-                const sideBar = document.getElementById("side-bar");
-                const canvasSideBar = document.getElementById("canvasSideBar");
-                if (sideBar && canvasSideBar) {
-                    sideBar.innerHTML = ``;
-                    while (canvasSideBar.firstChild) {
-                        sideBar.appendChild(canvasSideBar.firstChild);
-                    }
-                    canvasSideBar.innerHTML = ``;
-                }
-            },
-            '(max-width: 768px)': () => {
-                const sideBar = document.getElementById("side-bar");
-                const canvasSideBar = document.getElementById("canvasSideBar");
-                if (sideBar && canvasSideBar) {
-                    canvasSideBar.innerHTML = ``;
-                    while (sideBar.firstChild) {
-                        canvasSideBar.appendChild(sideBar.firstChild);
-                    }
-                    sideBar.innerHTML = ``;
-                }
-            },
-        });
+        
         
         const modalCategoryContent = `
             <form onSubmit="event.preventDefault();">
@@ -170,7 +145,32 @@ export async function renderPage() {
     console.log(AppState)
     const container = document.getElementById("app");
     container.innerHTML = await EditBooks();
-
+    watchMediaQueries({
+        '(min-width: 768px)': () => {
+            const canvasClose = document.querySelector("#SideBar > div.offcanvas-header > button");
+            if(canvasClose) canvasClose.click();
+            const sideBar = document.getElementById("side-bar");
+            const canvasSideBar = document.getElementById("canvasSideBar");
+            if (sideBar && canvasSideBar) {
+                sideBar.innerHTML = ``;
+                while (canvasSideBar.firstChild) {
+                    sideBar.appendChild(canvasSideBar.firstChild);
+                }
+                canvasSideBar.innerHTML = ``;
+            }
+        },
+        '(max-width: 768px)': () => {
+            const sideBar = document.getElementById("side-bar");
+            const canvasSideBar = document.getElementById("canvasSideBar");
+            if (sideBar && canvasSideBar) {
+                canvasSideBar.innerHTML = ``;
+                while (sideBar.firstChild) {
+                    canvasSideBar.appendChild(sideBar.firstChild);
+                }
+                sideBar.innerHTML = ``;
+            }
+        },
+    });
     document.getElementById("searchInput").addEventListener("keyup", (event) => {
         if(event.target.value.trim() != AppState.Filters.Search){
             AppState.Filters.Search = event.target.value;
@@ -186,6 +186,7 @@ export async function renderPage() {
         AppState.Books.sort((a, b) => b.title.localeCompare(a.title));
         filterBook();
     });
+
     document.getElementById("CreateCategoryModalBtn1").addEventListener("click", ()=>{modalCategoryCancel()})
     document.getElementById("CreateCategoryModalBtn2").addEventListener("click", ()=>{modalCreateCategory()})
     SideBarEventLoader()
