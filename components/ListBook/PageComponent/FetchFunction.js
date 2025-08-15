@@ -34,25 +34,29 @@ export const getBooks = async () => {
         if(data.success){
             data.data = data.data.map(book => ({
                 ...book,
-                publisher: book.publisher === null ? "" : book.publisher
+                publisher: book.publisher === null ? "" : book.publisher,
+                img_src: ""
             }));
-            const booksWithImages = await Promise.all(data.data.map(async (book) => {
-                book.img_src = await renderImg(book.isbn);
-                return book;
-            }));
-            AppState.fetchBook = true;
-            AppState.Books = booksWithImages;
+            
+            AppState.Books = data.data;
         }
     }catch (error) {
         console.error("addBookDB hatası:", error);
     }
 }
 
-async function renderImg(isbn) {
+export async function renderImg(isbn) {
     try {
         const response = await fetch(`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`);
         if (!response.ok) return ""; // Resim yoksa boş döner
         const blob = await response.blob();
+        const book_img = document.querySelector(`#book_${isbn} img`)
+        if(blob.size < 100){
+            if(book_img) book_img.src = `${api_name_server}book_placeholder.jpg`
+            return `${api_name_server}book_placeholder.jpg`
+        }
+        
+        if(book_img) book_img.src = URL.createObjectURL(blob);
         return URL.createObjectURL(blob);
     } catch {
         return ""; // Hata varsa boş döner

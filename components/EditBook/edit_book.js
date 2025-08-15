@@ -2,7 +2,7 @@ import { spinner, watchMediaQueries } from "../../js/script.js";
 import { BookItem, BookItemEventLoader} from "./PageComponent/BookItemComponent.js";
 import { SideBar, SideBarEventLoader } from "./PageComponent/SideBarComponent.js";
 import { filterBook } from "./PageComponent/FilterFunction.js";
-import { getCategory, getBooks } from "./PageComponent/FetchFunction.js";
+import { getCategory, getBooks, renderImg } from "./PageComponent/FetchFunction.js";
 import { AppState } from "../../states/BookStates.js";
 import { Modal, ModalHide } from "../modal.js";
 import { ToastMessage } from "../toast_message.js";
@@ -203,4 +203,17 @@ export async function renderPage() {
     SideBarEventLoader()
     BookItemEventLoader()
     UpdateModalEventLoader()
+    SideBarEventLoader()
+    if (AppState.fetchBook === true) {
+        for (const element of AppState.Books) {
+            if (element.img_src instanceof Promise) {
+                element.img_src = await renderImg(element.isbn);
+            }
+        }
+    }else{
+        AppState.Books.map(async (element)  => {
+            element.img_src = await renderImg(element.isbn);
+        })
+    }
+    AppState.fetchBook = true;
 }

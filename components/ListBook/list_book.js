@@ -2,7 +2,7 @@ import { spinner, watchMediaQueries } from "../../js/script.js";
 import { BookItem } from "./PageComponent/BookItemComponent.js";
 import { SideBar, SideBarEventLoader } from "./PageComponent/SideBarComponent.js";
 import { filterBook } from "./PageComponent/FilterFunction.js";
-import { getCategory, getBooks } from "./PageComponent/FetchFunction.js";
+import { getCategory, getBooks, renderImg } from "./PageComponent/FetchFunction.js";
 import { AppState } from "../../states/BookStates.js";
 
 const ListBooks = async () => {
@@ -108,6 +108,8 @@ export async function renderPage() {
     const container = document.getElementById("app");
     container.innerHTML = await ListBooks();
     
+    
+
     document.getElementById("searchInput").addEventListener("keyup", (event) => {
         if(event.target.value.trim() != AppState.Filters.Search){
             AppState.Filters.Search = event.target.value;
@@ -125,4 +127,16 @@ export async function renderPage() {
         filterBook();
     });
     SideBarEventLoader()
+    if (AppState.fetchBook === true) {
+        for (const element of AppState.Books) {
+            if (element.img_src instanceof Promise) {
+                element.img_src = await renderImg(element.isbn);
+            }
+        }
+    }else{
+        AppState.Books.map(async (element)  => {
+            element.img_src = await renderImg(element.isbn);
+        })
+    }
+    AppState.fetchBook = true;
 }

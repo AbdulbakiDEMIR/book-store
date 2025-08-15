@@ -1,8 +1,10 @@
 export const AppState = {
     fetchBook: false,
     Books: [],
+    RenderBooks: [],
     Categories: [],
-    Filters: { Search: "" }
+    Filters: { Search: "" },
+    BookCount : 20
 };
 export const CreateBookItem = {
     book:{
