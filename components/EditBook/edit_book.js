@@ -27,7 +27,8 @@ const modalCreateCategory = async () => {
         const response = await fetch(`${api_name_server}create_category.php`,
             {
                 method: "POST",
-                body: formData
+                body: formData,
+                credentials: "include"
             }
         );
         const data = await response.json();
