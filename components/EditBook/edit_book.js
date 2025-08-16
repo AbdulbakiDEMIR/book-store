@@ -213,7 +213,9 @@ export async function renderPage() {
         }
     }else{
         AppState.Books.map(async (element)  => {
-            element.img_src = await renderImg(element.isbn);
+            if(element.img_src === ""){
+                element.img_src = await renderImg(element.isbn);
+            }
         })
     }
     AppState.fetchBook = true;

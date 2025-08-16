@@ -116,7 +116,7 @@ export const BookItem = (book_item) => {
                     </div>
                 </div>
                 <div class="w-100 bg-dark">
-                    <img src="${book_item.img_src || 'https://via.placeholder.com/200x300?text=No+Image'}" class="book-img"/>
+                    <img src="${book_item.img_src}" class="book-img"/>
                 </div>
                 <div class="w-100 d-flex flex-column mt-2" >
                     ${book_item.title ? `<h5 class="fw-bold m-0">${book_item.title}</h5>` : ''}

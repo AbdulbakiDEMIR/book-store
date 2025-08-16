@@ -35,10 +35,10 @@ export const getBooks = async () => {
             data.data = data.data.map(book => ({
                 ...book,
                 publisher: book.publisher === null ? "" : book.publisher,
-                img_src: ""
+                img_src: book.img_src ? api_name_server+"img/"+book.img_src : ""
             }));
-            
             AppState.Books = data.data;
+            console.log(AppState.Books)
         }
     }catch (error) {
         console.error("addBookDB hatası:", error);
