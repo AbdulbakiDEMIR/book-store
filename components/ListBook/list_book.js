@@ -126,6 +126,8 @@ export async function renderPage() {
         AppState.Books.sort((a, b) => b.title.localeCompare(a.title));
         filterBook();
     });
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     SideBarEventLoader()
     if (AppState.fetchBook === true) {
         for (const element of AppState.Books) {
